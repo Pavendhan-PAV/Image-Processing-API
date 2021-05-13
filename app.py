@@ -164,9 +164,14 @@ def blend():
     alpha = request.form['alpha']
     filename1 = request.form['image']
 
+    ext = os.path.splitext(filename1)[1]
+    if(ext == ".png"):
+        filename2 = 'blend.png'
+    else:
+        filename2 = 'blend.jpg'
     # open images
     target = os.path.join(APP_ROOT, 'static/images')
-    filename2 = 'blend.jpg'
+    
     destination1 = "/".join([target, filename1])
     destination2 = "/".join([target, filename2])
 
