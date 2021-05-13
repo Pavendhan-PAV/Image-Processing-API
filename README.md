@@ -7,7 +7,6 @@ For a live demo, please visit this [link](https://dig-img-processing-api.herokua
 The API includes three Python files:
 * `core.py`: includes the basic calls of the API. Run the file and use `GET` requests on `localhost:5000`. For more details please refer to the documentation section in this file.
 * `app.py`: a web application to test the functionality that serves as a proof of concept. Run it, navigate to `localhost:5000` and follow the instructions. For more details please refer to the documentation section in this file.
-* `test.py`: a file to test API requests by checking the received http status codes. `core.py` needs to be running.
 
 Other files have been included for Heroku deployment: `Procfile` & `requirements.txt`.
 
@@ -40,6 +39,12 @@ with the start and stop point coordinates, (`x1, y1`) and (`x2, y2`), respective
 GET /blend/<alpha>/<filename1>/<filename2>
 ```
 where `alpha`, in % (between 0 and 100), is the weight of the first image in the blend. `filename1` and `filename2` specify the images to blend. If one of them is in gray scale, the other one will be converted automatically. Antialias resizing is also done behind the curtains.
+
+### Noise & Blur
+``` http
+GET /Noise/<typ>/<filename>
+```
+where `typ` can be `Gaussian` or `Salt & Pepper` or `Poisson` or `Speckle` and `filename` is the image file name, including extension and relative to the images folder. 
 
 ## Web application
 To test the app localy, run `app.py` and navigate to `localhost:5000`. Otherwise, navigate to the live demo.
