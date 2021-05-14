@@ -251,7 +251,7 @@ def Noise():
     elif noise_typ  == "poisson":
         vals = len(np.unique(image))
         vals = 2 ** np.ceil(np.log2(vals))
-        image = np.random.poisson(image * vals) / float(vals)
+        image = np.random.poisson((image * vals) / float(vals))
 
     elif noise_typ  == "speckle":
         row,col,ch = image.shape

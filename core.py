@@ -3,7 +3,6 @@
 from flask import Flask, render_template, send_from_directory, redirect
 import os
 import cv2
-from skimage.util import random_noise
 import numpy as np
 from PIL import Image
 
@@ -177,13 +176,14 @@ def Noise(noise_typ, filename):
     image = Image.open(destination)
     
     if noise_typ  == "gauss":
-        row,col,ch= image.shape
+        image = cv2.GaussianBlur(image, (11,11), 0)
+        """ row,col,ch= image.shape
         mean = 0
         var = 0.1
         sigma = var**0.5
         gauss = np.random.normal(mean,sigma,(row,col,ch))
         gauss = gauss.reshape(row,col,ch)
-        image = image + gauss
+        image = image + gauss """
 
     elif noise_typ  == "s&p":
         row,col,ch = image.shape
